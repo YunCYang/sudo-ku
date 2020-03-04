@@ -1,25 +1,23 @@
 import React from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import Main from './main';
+import Game from './game';
+import Shadow from './shadow';
+import Modal from './modal';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: null,
-      isLoading: true
-    };
-  }
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <div className='main'>
+          <Route exact path='/' render={() => <Main />} />
+          <Route path='/game' render={() => <Game />} />
+          <Shadow />
+          <Modal />
+        </div>
+      </Switch>
+    </Router>
+  );
+};
 
-  componentDidMount() {
-    fetch('/api/health-check')
-      .then(res => res.json())
-      .then(data => this.setState({ message: data.message || data.error }))
-      .catch(err => this.setState({ message: err.message }))
-      .finally(() => this.setState({ isLoading: false }));
-  }
-
-  render() {
-    return this.state.isLoading
-      ? <h1>Testing connections...</h1>
-      : <h1>{this.state.message.toUpperCase()}</h1>;
-  }
-}
+export default App;
