@@ -9,12 +9,14 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <div className='main'>
-          <Route exact path='/' render={() => <Main />} />
-          <Route path='/game' render={() => <Game />} />
+        <>
+          <div className="main">
+            <Route exact path='/' render={() => <Main />} />
+            <Route path='/game' render={() => <Game />} />
+          </div>
           <Shadow />
           <Modal />
-        </div>
+        </>
       </Switch>
     </Router>
   );
