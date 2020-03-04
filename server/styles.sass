@@ -2,3 +2,135 @@
 
 $font-title: 'Julius Sans One', sans-serif
 $font-content: 'Jura', sans-serif
+$color-cosmo: #364f6b
+$color-life: #3fc1c9
+$color-light: #f5f5f5
+$color-danger: #fc5185
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+
+div.main
+  height: 100vh
+  width: 100vw
+  background-color: $color-cosmo
+
+  div.content
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+
+    div.title
+      font-family: $font-title
+      font-size: 3em
+      color: $color-life
+
+    div.option
+      display: flex
+      flex-direction: column
+
+      >*
+        margin-bottom: 1em
+
+      button
+        border: 1px $color-life solid
+        border-radius: 10px
+        font-family: $font-content
+        background-color: transparent
+        color: $color-life
+        font-size: 1em
+        padding: 0.3em 0.4em
+        cursor: pointer
+
+        &:hover
+          border-color: $color-light
+          color: $color-light
+
+      div.difficulty
+        height: 30.25px
+        width: 100%
+        overflow: hidden
+        position: relative
+        color: $color-life
+        font-family: $font-content
+
+        div.controls,
+        input.activator
+          display: none
+
+        @for $num from 1 to 6
+          input.activator:nth-of-type(#{$num})
+            &:checked~div.track
+              transform: translateX(calc((#{$num} - 1) * 100% * -1 ))
+            &:checked~div.slide:nth-of-type(#{$num})
+              transition: opacity 0.5s, transform 0.5s
+              top: 0
+              left: 0
+              right: 0
+              opacity: 1
+            &:checked~div.controls:nth-of-type(#{$num})
+              display: block
+              opacity: 1
+            &:checked~div.indicators
+              label.indicator:nth-of-type(#{$num})
+                opacity: 1
+
+        div.controls
+          label.control
+            height: 10px
+            width: 10px
+            margin-top: -3px
+            position: absolute
+            top: 50%
+            cursor: pointer
+            border-width: 2px 2px 0 0
+            display: block
+            border-style: solid
+            border-color: $color-life
+            opacity: 0.7
+            z-index: 3
+            outline: 0
+
+            &:hover
+              opacity: 1
+              border-color: $color-light
+
+          .control-backward
+            left: 5px
+            transform: rotate(-135deg)
+
+          .control-forward
+            right: 5px
+            transform: rotate(45deg)
+
+        div.track
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          transition: transform 0.5s ease 0s
+
+          div.slide
+            display: flex
+            justify-content: center
+            align-items: center
+            top: 0
+            left: 0
+            right: 0
+            opacity: 1
+            overflow: hidden
+            height: 100%
+            position: absolute
+            @for $num from 1 to 6
+              &:nth-of-type(#{$num})
+                transform: translateX(calc((#{$num} - 1) * 100%))
+
+            span
+              font-size: 0.8em

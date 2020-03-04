@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Julius+Sans+One|Jura&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+div.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: #364f6b;
+}
+div.main div.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+div.main div.content div.title {
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 3em;
+  color: #3fc1c9;
+}
+div.main div.content div.option {
+  display: flex;
+  flex-direction: column;
+}
+div.main div.content div.option > * {
+  margin-bottom: 1em;
+}
+div.main div.content div.option button {
+  border: 1px #3fc1c9 solid;
+  border-radius: 10px;
+  font-family: "Jura", sans-serif;
+  background-color: transparent;
+  color: #3fc1c9;
+  font-size: 1em;
+  padding: 0.3em 0.4em;
+  cursor: pointer;
+}
+div.main div.content div.option button:hover {
+  border-color: #f5f5f5;
+  color: #f5f5f5;
+}
+div.main div.content div.option div.difficulty {
+  height: 30.25px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  color: #3fc1c9;
+  font-family: "Jura", sans-serif;
+}
+div.main div.content div.option div.difficulty div.controls,
+div.main div.content div.option div.difficulty input.activator {
+  display: none;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(1):checked ~ div.track {
+  transform: translateX(calc((1 - 1) * 100% * -1 ));
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(1):checked ~ div.slide:nth-of-type(1) {
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(1):checked ~ div.controls:nth-of-type(1) {
+  display: block;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(1):checked ~ div.indicators label.indicator:nth-of-type(1) {
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(2):checked ~ div.track {
+  transform: translateX(calc((2 - 1) * 100% * -1 ));
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(2):checked ~ div.slide:nth-of-type(2) {
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(2):checked ~ div.controls:nth-of-type(2) {
+  display: block;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(2):checked ~ div.indicators label.indicator:nth-of-type(2) {
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(3):checked ~ div.track {
+  transform: translateX(calc((3 - 1) * 100% * -1 ));
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(3):checked ~ div.slide:nth-of-type(3) {
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(3):checked ~ div.controls:nth-of-type(3) {
+  display: block;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(3):checked ~ div.indicators label.indicator:nth-of-type(3) {
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(4):checked ~ div.track {
+  transform: translateX(calc((4 - 1) * 100% * -1 ));
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(4):checked ~ div.slide:nth-of-type(4) {
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(4):checked ~ div.controls:nth-of-type(4) {
+  display: block;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(4):checked ~ div.indicators label.indicator:nth-of-type(4) {
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(5):checked ~ div.track {
+  transform: translateX(calc((5 - 1) * 100% * -1 ));
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(5):checked ~ div.slide:nth-of-type(5) {
+  transition: opacity 0.5s, transform 0.5s;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(5):checked ~ div.controls:nth-of-type(5) {
+  display: block;
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty input.activator:nth-of-type(5):checked ~ div.indicators label.indicator:nth-of-type(5) {
+  opacity: 1;
+}
+div.main div.content div.option div.difficulty div.controls label.control {
+  height: 10px;
+  width: 10px;
+  margin-top: -3px;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  border-width: 2px 2px 0 0;
+  display: block;
+  border-style: solid;
+  border-color: #3fc1c9;
+  opacity: 0.7;
+  z-index: 3;
+  outline: 0;
+}
+div.main div.content div.option div.difficulty div.controls label.control:hover {
+  opacity: 1;
+  border-color: #f5f5f5;
+}
+div.main div.content div.option div.difficulty div.controls .control-backward {
+  left: 5px;
+  transform: rotate(-135deg);
+}
+div.main div.content div.option div.difficulty div.controls .control-forward {
+  right: 5px;
+  transform: rotate(45deg);
+}
+div.main div.content div.option div.difficulty div.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.5s ease 0s;
+}
+div.main div.content div.option div.difficulty div.track div.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+}
+div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(1) {
+  transform: translateX(calc((1 - 1) * 100%));
+}
+div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(2) {
+  transform: translateX(calc((2 - 1) * 100%));
+}
+div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(3) {
+  transform: translateX(calc((3 - 1) * 100%));
+}
+div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(4) {
+  transform: translateX(calc((4 - 1) * 100%));
+}
+div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(5) {
+  transform: translateX(calc((5 - 1) * 100%));
+}
+div.main div.content div.option div.difficulty div.track div.slide span {
+  font-size: 0.8em;
+}
+
+/*# sourceMappingURL=styles.css.map */
