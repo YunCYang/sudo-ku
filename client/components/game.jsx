@@ -2,7 +2,11 @@ import React from 'react';
 
 const Game = () => {
   return (
-    <div></div>
+    <div className='content'>
+      <div className='grid'></div>
+      <div className='number'></div>
+      <div className='action'></div>
+    </div>
   );
 };
 

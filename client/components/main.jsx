@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-const Main = () => {
+const Main = props => {
   const [, setDifficulty] = React.useState(0);
 
   return (
@@ -82,11 +83,13 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <button>New Game</button>
-        <button>Resume</button>
+        <button type='button' onClick={
+          () => props.history.push('/game')
+        }>New Game</button>
+        <button type='button'>Resume</button>
       </div>
     </div>
   );
 };
 
-export default Main;
+export default withRouter(Main);
