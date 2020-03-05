@@ -43,4 +43,5 @@ describe('test createPuzzle', () => {
     }
     expect(gridTest.includes(false)).toBe(false);
   });
+  // console.log(testPuzzle);
 });
