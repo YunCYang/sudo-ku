@@ -78,6 +78,11 @@ const createPuzzle = () => {
     }
   }
   const placeNumber = index => {
+    if (availRandNum[index][1] === 9) {
+      availRandNum[index][1] = 0;
+      availRandNum[index - 1][1] += 1;
+      placeNumber(index - 1);
+    }
     if (availRandNum[index][0] + availRandNum[index][1] <= 9) {
       gridNum[nonDiagonal[index][0]][nonDiagonal[index][1]] =
         availRandNum[index][0] + availRandNum[index][1];
@@ -88,80 +93,81 @@ const createPuzzle = () => {
     const horiArr = gridNum[nonDiagonal[index][0]];
     const vertArr = [];
     let blockArr = [];
-    let prevBlockArr = [];
+    // let prevBlockArr = [];
     for (let i = 0; i < 9; i++) {
       vertArr.push(gridNum[i][nonDiagonal[index][1]]);
     }
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < 9; j++) {
         if (nonDiagonal[index][0] === block[i][j][0] &&
-            nonDiagonal[index][1] === block[i][j][1]) blockArr = block[i];
-        if (!j && i) prevBlockArr = blockArr[i - 1];
-        else prevBlockArr = blockArr[i];
+            nonDiagonal[index][1] === block[i][j][1]) {
+          blockArr = gridNumArrTransform(block[i]);
+          // if (!j && i) prevBlockArr = gridNumArrTransform(blockArr[i - 1]);
+          // else prevBlockArr = gridNumArrTransform(blockArr[i]);
+          break;
+        }
       }
     }
+    // console.log(gridNum);
     if (checkSection(horiArr) && checkSection(vertArr) && checkSection(blockArr)) {
-      // console.log(index);
       if (index < 53) placeNumber(index + 1);
       else return true;
     } else {
-      // console.log(index);
       const blockSet = new Set();
       let tempNum = null;
       for (let i = 0; i < 9; i++) {
         if (blockArr[i] !== 0) blockSet.add(blockArr[i]);
       }
-      do {
-        availRandNum[index][1] += 1;
+      while (availRandNum[index][1] < 9) {
         if (availRandNum[index][0] + availRandNum[index][1] <= 9) {
           tempNum = availRandNum[index][0] + availRandNum[index][1];
         } else tempNum = availRandNum[index][0] + availRandNum[index][1] - 9;
-      } while (blockSet.has(tempNum) && availRandNum[index][1] < 9);
-      if (availRandNum[index][1] < 9) {
-        // console.log(gridNum);
-        placeNumber(index);
-      } else {
-        gridNum[nonDiagonal[index][0]][nonDiagonal[index][1]] = 0;
-        const prevBlockSet = new Set();
-        availRandNum[index][1] = 0;
-        for (let i = 0; i < 9; i++) {
-          if (prevBlockArr[i] !== 0) prevBlockSet.add(prevBlockArr[i]);
-        }
-        do {
-          availRandNum[index - 1][1] += 1;
-          if (availRandNum[index - 1][0] + availRandNum[index - 1][1] <= 9) {
-            tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1];
-          } else tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1] - 9;
-        } while (blockSet.has(tempNum));
-        placeNumber(index - 1);
+        availRandNum[index][1] += 1;
+        if (!blockSet.has(tempNum)) break;
       }
-      // if (availRandNum[index][1] < 8) {
-      //   for (let i = 0; i < 9; i++) {
-      //     if (blockArr[i] !== 0) blockSet.add(blockArr[i]);
-      //   }
-      //   do {
-      //     availRandNum[index][1] += 1;
-      //     if (availRandNum[index][0] + availRandNum[index][1] <= 9) {
-      //       tempNum = availRandNum[index][0] + availRandNum[index][1];
-      //     } else tempNum = availRandNum[index][0] + availRandNum[index][1] - 9;
-      //   } while (blockSet.has(tempNum));
+      // do {
+      //   if (availRandNum[index][0] + availRandNum[index][1] <= 9) {
+      //     tempNum = availRandNum[index][0] + availRandNum[index][1];
+      //   } else tempNum = availRandNum[index][0] + availRandNum[index][1] - 9;
+      //   availRandNum[index][1] += 1;
+      // } while (blockSet.has(tempNum) && availRandNum[index][1] < 9);
+      // availRandNum[index][1] -= 1;
+      // console.log(availRandNum[index][1]);
+      // if (availRandNum[index][1] < 9) {
       //   placeNumber(index);
-      // } else {
+      // }
+      // else {
+      //   gridNum[nonDiagonal[index][0]][nonDiagonal[index][1]] = 0;
+      //   const prevBlockSet = new Set();
+      //   availRandNum[index][1] = 0;
       //   for (let i = 0; i < 9; i++) {
-      //     if (prevBlockArr[i] !== 0) blockSet.add(prevBlockArr[i]);
+      //     if (prevBlockArr[i] !== 0) prevBlockSet.add(prevBlockArr[i]);
       //   }
-      //   do {
-      //     availRandNum[index - 1][1] += 1;
+      //   while (availRandNum[index - 1][1] < 9) {
       //     if (availRandNum[index - 1][0] + availRandNum[index - 1][1] <= 9) {
       //       tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1];
       //     } else tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1] - 9;
-      //   } while (blockSet.has(tempNum));
-      //   console.log(gridNum);
-      //   availRandNum[index][1] = 0;
-      //   availRandNum[index - 1][1] += 1;
+      //     availRandNum[index - 1][1] += 1;
+      //     if (!prevBlockSet.has(tempNum)) break;
+      //   }
+      //   // do {
+      //   //   if (availRandNum[index - 1][0] + availRandNum[index - 1][1] <= 9) {
+      //   //     tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1];
+      //   //   } else tempNum = availRandNum[index - 1][0] + availRandNum[index - 1][1] - 9;
+      //   //   availRandNum[index - 1][1] += 1;
+      //   // } while (blockSet.has(tempNum) && availRandNum[index - 1][1] < 9);
+      //   // availRandNum[index - 1][1] -= 1;
       //   placeNumber(index - 1);
       // }
+      placeNumber(index);
     }
+  };
+  const gridNumArrTransform = fromArr => {
+    const toArr = [];
+    for (let i = 0; i < fromArr.length; i++) {
+      toArr.push(gridNum[fromArr[i][0]][fromArr[i][1]]);
+    }
+    return toArr;
   };
   placeNumber(0);
   return gridNum;
