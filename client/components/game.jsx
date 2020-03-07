@@ -2,7 +2,15 @@ import React from 'react';
 // import createPuzzle from '../util/createPuzzle';
 
 const Game = () => {
-  // console.log(createPuzzle());
+  // let success = false;
+  // while (!success) {
+  //   try {
+  //     console.log(createPuzzle());
+  //     success = true;
+  //   } catch {
+  //     console.log('error');
+  //   }
+  // }
   return (
     <div className='content'>
       <div className='grid'></div>

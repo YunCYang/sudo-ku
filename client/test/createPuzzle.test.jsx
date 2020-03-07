@@ -43,5 +43,4 @@ describe('test createPuzzle', () => {
     gridTest = gridTest.map(i => checkPuzzle(i));
     expect(gridTest.includes(false)).toBe(false);
   });
-  // console.log(testPuzzle);
 });
