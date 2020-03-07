@@ -6,13 +6,15 @@ import Shadow from './shadow';
 import Modal from './modal';
 
 const App = () => {
+  const [difficulty, setDifficulty] = React.useState(0);
+
   return (
     <Router>
       <Switch>
         <>
           <div className="main">
-            <Route exact path='/' render={() => <Main />} />
-            <Route path='/game' render={() => <Game />} />
+            <Route exact path='/' render={() => <Main setDifficulty={setDifficulty} />} />
+            <Route path='/game' render={() => <Game difficulty={difficulty} />} />
           </div>
           <Shadow />
           <Modal />

@@ -210,6 +210,7 @@ div.main div.content div.option div.difficulty div.track div.slide span {
 }
 div.main div.content.game-content {
   flex-direction: row;
+  padding: 0.5em;
 }
 div.main div.content.game-content div.grid {
   max-height: calc( 100vh - 4em );
@@ -251,6 +252,7 @@ div.main div.content.game-content div.panel div.action {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 div.main div.content.game-content div.panel div.action button {
   border: 1px #3fc1c9 solid;

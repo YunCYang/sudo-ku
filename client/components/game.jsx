@@ -1,21 +1,27 @@
 import React from 'react';
-// import createPuzzle from '../util/createPuzzle';
+import createPuzzle from '../util/createPuzzle';
 import Grid from './grid';
 
-const Game = () => {
-  // let success = false;
-  // while (!success) {
-  //   try {
-  //     console.log(createPuzzle());
-  //     success = true;
-  //   } catch {
-  //     console.log('error');
-  //   }
-  // }
+const Game = props => {
+  const [puzzle, setPuzzle] = React.useState([]);
+
+  React.useEffect(
+    () => {
+      let success = false;
+      while (!success) {
+        try {
+          setPuzzle(createPuzzle());
+          success = true;
+        } catch {
+          continue;
+        }
+      }
+    }, []
+  );
   return (
     <div className='content game-content'>
       <div className='grid'>
-        <Grid />
+        <Grid puzzle={puzzle} />
       </div>
       <div className="panel">
         <div className='number'>
