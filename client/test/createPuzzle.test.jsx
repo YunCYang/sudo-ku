@@ -28,7 +28,6 @@ describe('test createPuzzle', () => {
 
   it('grid test', () => {
     let gridTest = [[], [], [], [], [], [], [], [], []];
-    gridTest = gridTest.map(i => checkPuzzle(i));
     for (let i = 0; i < 9; i++) {
       const leftBound = (i % 3) * 3;
       let topBound = null;
@@ -41,6 +40,7 @@ describe('test createPuzzle', () => {
         }
       }
     }
+    gridTest = gridTest.map(i => checkPuzzle(i));
     expect(gridTest.includes(false)).toBe(false);
   });
   // console.log(testPuzzle);
