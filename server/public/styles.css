@@ -208,5 +208,90 @@ div.main div.content div.option div.difficulty div.track div.slide:nth-of-type(5
 div.main div.content div.option div.difficulty div.track div.slide span {
   font-size: 0.8em;
 }
+div.main div.content.game-content {
+  flex-direction: row;
+}
+div.main div.content.game-content div.grid {
+  max-height: calc( 100vh - 4em );
+  max-width: calc( 100vh - 4em );
+  width: calc( 100vw - 10em );
+  height: calc( 100vw - 10em );
+  background-color: firebrick;
+}
+div.main div.content.game-content div.panel {
+  display: flex;
+  flex-direction: column;
+  width: 6em;
+}
+div.main div.content.game-content div.panel div.number {
+  display: flex;
+  flex-direction: column;
+  height: 15em;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+div.main div.content.game-content div.panel div.number button {
+  border: 1px #3fc1c9 solid;
+  border-radius: 100%;
+  font-family: "Jura", sans-serif;
+  background-color: transparent;
+  color: #3fc1c9;
+  font-size: 1em;
+  padding: 0.3em 0.4em;
+  cursor: pointer;
+  min-width: 2em;
+  min-height: 2em;
+  margin: 0.5em;
+}
+div.main div.content.game-content div.panel div.number button:hover {
+  border-color: #f5f5f5;
+  color: #f5f5f5;
+}
+div.main div.content.game-content div.panel div.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.main div.content.game-content div.panel div.action button {
+  border: 1px #3fc1c9 solid;
+  border-radius: 100%;
+  font-family: "Jura", sans-serif;
+  background-color: transparent;
+  color: #3fc1c9;
+  font-size: 1.5em;
+  padding: 0.3em 0.4em;
+  cursor: pointer;
+  min-width: 2em;
+  min-height: 2em;
+  margin: 0.5em;
+}
+div.main div.content.game-content div.panel div.action button:hover {
+  border-color: #f5f5f5;
+  color: #f5f5f5;
+}
+
+@media screen and (max-width: 1024px) {
+  div.main div.content.game-content {
+    flex-direction: column;
+  }
+  div.main div.content.game-content div.grid {
+    max-height: calc( 100vh - 10em );
+    max-width: calc( 100vh - 10em );
+    width: calc( 100vw - 1em );
+    height: calc( 100vw - 1em );
+    background-color: firebrick;
+  }
+  div.main div.content.game-content div.panel {
+    width: 15em;
+  }
+  div.main div.content.game-content div.panel div.number {
+    flex-direction: row;
+    height: 6em;
+    margin-bottom: 0;
+  }
+  div.main div.content.game-content div.panel div.action {
+    flex-direction: row;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
