@@ -3,6 +3,33 @@ import { withRouter } from 'react-router-dom';
 
 const Main = props => {
 
+  React.useEffect(
+    () => {
+      document.querySelector('#beginner').checked = false;
+      document.querySelector('#easy').checked = false;
+      document.querySelector('#medium').checked = false;
+      document.querySelector('#hard').checked = false;
+      document.querySelector('#abyssal').checked = false;
+      if (props.difficulty === 0) {
+        document.querySelector('#beginner').checked = true;
+      } else if (props.difficulty === 1) {
+        document.querySelector('#easy').checked = true;
+      } else if (props.difficulty === 2) {
+        document.querySelector('#medium').checked = true;
+      } else if (props.difficulty === 3) {
+        document.querySelector('#hard').checked = true;
+      } else if (props.difficulty === 4) {
+        document.querySelector('#abyssal').checked = true;
+      }
+
+      if (Object.keys(props.currentGame[props.difficulty]).length === 0) {
+        document.querySelector('#resume').className = 'hide';
+      } else {
+        document.querySelector('#resume').className = '';
+      }
+    }, [props.difficulty]
+  );
+
   return (
     <div className='content'>
       <div className='title'>
@@ -83,9 +110,17 @@ const Main = props => {
           </div>
         </div>
         <button type='button' onClick={
-          () => props.history.push('/game')
+          () => {
+            props.history.push('/game');
+            props.setNewGame(true);
+          }
         }>New Game</button>
-        <button type='button'>Resume</button>
+        <button id='resume' type='button' onClick={
+          () => {
+            props.history.push('/game');
+            props.setNewGame(false);
+          }
+        }>Resume</button>
       </div>
     </div>
   );

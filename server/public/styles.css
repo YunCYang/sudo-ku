@@ -28,6 +28,7 @@ div.main div.content div.title {
 div.main div.content div.option {
   display: flex;
   flex-direction: column;
+  min-height: 138.75px;
 }
 div.main div.content div.option > * {
   margin-bottom: 1em;
@@ -304,6 +305,10 @@ div.main div.content.game-content div.panel div.action button {
 div.main div.content.game-content div.panel div.action button:hover {
   border-color: #f5f5f5;
   color: #f5f5f5;
+}
+
+.hide {
+  display: none;
 }
 
 @media screen and (max-width: 710px) {

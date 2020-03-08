@@ -2,6 +2,7 @@ import React from 'react';
 import createPuzzle from '../util/createPuzzle';
 import randomCover from '../util/randomCover';
 import Grid from './grid';
+import { withRouter } from 'react-router-dom';
 
 const Game = props => {
   const [puzzle, setPuzzle] = React.useState([]);
@@ -9,16 +10,31 @@ const Game = props => {
 
   React.useEffect(
     () => {
-      let success = false;
-      while (!success) {
-        try {
-          setPuzzle(createPuzzle());
-          success = true;
-        } catch {
-          continue;
+      if (props.newGame) {
+        let success = false;
+        let tempPuzzle = null;
+        let tempCover = null;
+        while (!success) {
+          try {
+            tempPuzzle = createPuzzle();
+            setPuzzle(tempPuzzle);
+            success = true;
+          } catch {
+            continue;
+          }
         }
+        tempCover = randomCover(props.difficulty);
+        setCover(tempCover);
+        const currentGameCopy = { ...props.currentGame };
+        currentGameCopy[props.difficulty] = {
+          puzzle: tempPuzzle,
+          cover: tempCover
+        };
+        props.setCurrentGame(currentGameCopy);
+      } else {
+        setPuzzle(props.currentGame[props.difficulty].puzzle);
+        setCover(props.currentGame[props.difficulty].cover);
       }
-      setCover(randomCover(props.difficulty));
     }, []
   );
 
@@ -62,7 +78,9 @@ const Game = props => {
         </div>
         <div className='action'>
           <div className="action__button">
-            <button>
+            <button onClick={
+              () => props.history.push('/')
+            }>
               <i className="fas fa-arrow-left"></i>
             </button>
           </div>
@@ -82,4 +100,4 @@ const Game = props => {
   );
 };
 
-export default Game;
+export default withRouter(Game);
