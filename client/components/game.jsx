@@ -1,9 +1,11 @@
 import React from 'react';
 import createPuzzle from '../util/createPuzzle';
+import randomCover from '../util/randomCover';
 import Grid from './grid';
 
 const Game = props => {
   const [puzzle, setPuzzle] = React.useState([]);
+  const [cover, setCover] = React.useState([]);
 
   React.useEffect(
     () => {
@@ -16,12 +18,14 @@ const Game = props => {
           continue;
         }
       }
+      setCover(randomCover(props.difficulty));
     }, []
   );
+
   return (
     <div className='content game-content'>
       <div className='grid'>
-        <Grid puzzle={puzzle} />
+        <Grid puzzle={puzzle} cover={cover} />
       </div>
       <div className="panel">
         <div className='number'>

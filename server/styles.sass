@@ -147,7 +147,42 @@ div.main
       max-width: calc( 100vh - 4em )
       width: calc( 100vw - 10em )
       height: calc( 100vw - 10em )
-      background-color: firebrick
+      display: flex
+      flex-direction: column
+
+      div.row
+        height: calc(100% / 9)
+        width: 100%
+        display: flex
+
+        div.col
+          height: 100%
+          width: calc(100% / 9)
+          display: flex
+          justify-content: center
+          align-items: center
+
+          span
+            font-family: $font-content
+            color: $color-life
+            font-size: 2em
+
+        .col-2,
+        .col-5
+          border-right: 1.5px solid $color-life
+
+        .col-3,
+        .col-6
+          border-left: 1.5px solid $color-life
+
+      .row-2,
+      .row-5
+        border-bottom: 1.5px solid $color-life
+
+      .row-3,
+      .row-6
+        border-top: 1.5px solid $color-life
+
 
     div.panel
       display: flex
@@ -187,17 +222,21 @@ div.main
             border-color: $color-light
             color: $color-light
 
-@media screen and ( max-width: 1024px )
+@media screen and ( max-width: 710px )
   div.main
     div.content.game-content
       flex-direction: column
 
       div.grid
-        max-height: calc( 100vh - 10em )
-        max-width: calc( 100vh - 10em )
+        max-height: calc( 100vh - 11em )
+        max-width: calc( 100vh - 11em )
         width: calc( 100vw - 1em )
         height: calc( 100vw - 1em )
-        background-color: firebrick
+
+        div.row
+          div.col
+            span
+              font-size: 1.6em
 
       div.panel
         width: 15em
@@ -209,3 +248,12 @@ div.main
 
         div.action
           flex-direction: row
+
+@media screen and ( max-width: 420px )
+  div.main
+    div.content.game-content
+      div.grid
+        div.row
+          div.col
+            span
+              font-size: 1.2em
