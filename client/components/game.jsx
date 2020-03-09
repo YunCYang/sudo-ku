@@ -45,7 +45,9 @@ const Game = props => {
     <div className='content game-content'>
       <div className='grid'>
         <Grid puzzle={puzzle} cover={cover} actionMode={actionMode}
-          setActionMode={setActionMode} guessNum={guessNum} />
+          setActionMode={setActionMode} guessNum={guessNum}
+          memory={props.memory} setMemory={props.setMemory}
+          isNote={isNote} setIsNote={setIsNote} />
       </div>
       <div className="panel">
         <div className='number'>

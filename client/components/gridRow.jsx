@@ -15,7 +15,10 @@ const GridRow = props => {
   const renderGridBlock = () => {
     if (blockArr.length) {
       return blockArr.map((item, index) => <GridBlock key={index}
-        value={item.value} isCover={item.isCover} index={index} />);
+        value={item.value} isCover={item.isCover} index={index}
+        memory={props.memory[index]} setMemory={props.setMemory}
+        isNote={props.isNote} setIsNote={props.setIsNote}
+        actionMode={props.actionMode} setActionMode={props.setActionMode} />);
     } else return null;
   };
 
