@@ -238,6 +238,16 @@ div.main div.content.game-content div.grid div.row div.col span {
   color: #3fc1c9;
   font-size: 2em;
 }
+div.main div.content.game-content div.grid div.row div.col div.circle {
+  height: 90%;
+  width: 90%;
+  border-radius: 100%;
+}
+div.main div.content.game-content div.grid div.row div.col div.circle.focus {
+  background-color: #3fc1c9;
+  color: #364f6b;
+  transition: all 0.5s ease 0s;
+}
 div.main div.content.game-content div.grid div.row .col-2,
 div.main div.content.game-content div.grid div.row .col-5 {
   border-right: 1.5px solid #3fc1c9;

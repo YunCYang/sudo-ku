@@ -10,6 +10,7 @@ const Game = props => {
   const [actionMode, setActionMode] = React.useState('');
   const [guessNum, setGuessNum] = React.useState(0);
   const [isNote, setIsNote] = React.useState(false);
+  const [block, setBlock] = React.useState([-1, -1]);
 
   React.useEffect(
     () => {
@@ -41,104 +42,74 @@ const Game = props => {
     }, []
   );
 
+  const handleNumberClick = num => {
+    setActionMode('number');
+    if (guessNum !== num) setGuessNum(num);
+    else {
+      setGuessNum(0);
+      setActionMode('');
+    }
+  };
+
   return (
     <div className='content game-content'>
       <div className='grid'>
         <Grid puzzle={puzzle} cover={cover} actionMode={actionMode}
           setActionMode={setActionMode} guessNum={guessNum}
           memory={props.memory} setMemory={props.setMemory}
-          isNote={isNote} setIsNote={setIsNote} />
+          isNote={isNote} setIsNote={setIsNote} block={block}
+          setBlock={setBlock} />
       </div>
       <div className="panel">
         <div className='number'>
           <div className="number__button">
             <button className={guessNum === 1 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 1) setGuessNum(1);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(1)
             }>1</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 2 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 2) setGuessNum(2);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(2)
             }>2</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 3 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 3) setGuessNum(3);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(3)
             }>3</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 4 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 4) setGuessNum(4);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(4)
             }>4</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 5 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 5) setGuessNum(5);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(5)
             }>5</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 6 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 6) setGuessNum(6);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(6)
             }>6</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 7 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 7) setGuessNum(7);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(7)
             }>7</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 8 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 8) setGuessNum(8);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(8)
             }>8</button>
           </div>
           <div className="number__button">
             <button className={guessNum === 9 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== 9) setGuessNum(9);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(9)
             }>9</button>
           </div>
           <div className="number__button">
             <button className={guessNum === -1 ? 'active' : ''} onClick={
-              () => {
-                setActionMode('number');
-                if (guessNum !== -1) setGuessNum(-1);
-                else setGuessNum(0);
-              }
+              () => handleNumberClick(-1)
             }>X</button>
           </div>
         </div>

@@ -9,7 +9,7 @@ const GridBlock = props => {
         return null;
       } else {
         return (
-          <div className='circle'>
+          <div className={circleClassName()}>
             <span>{props.memory[0] === 0 ? '' : props.memory[0]}</span>
           </div>
         );
@@ -18,7 +18,22 @@ const GridBlock = props => {
   };
 
   const clickHandler = () => {
-    return null;
+    if (props.actionMode === 'number') {
+      return null;
+    } else if (props.actionMode === 'block' && props.block[0] === props.rowIndex &&
+      props.block[1] === props.index) {
+      props.setActionMode('');
+      props.setBlock([-1, -1]);
+    } else {
+      if (!props.actionMode) props.setActionMode('block');
+      props.setBlock([props.rowIndex, props.index]);
+    }
+  };
+
+  const circleClassName = () => {
+    if (props.actionMode === 'block' && props.block[0] === props.rowIndex &&
+      props.block[1] === props.index) return 'circle focus';
+    else return 'circle';
   };
 
   return (

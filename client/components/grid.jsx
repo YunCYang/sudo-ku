@@ -24,7 +24,8 @@ const Grid = props => {
       (item, index) => <GridRow key={index} rowData={item} index={index}
         memory={props.memory[index]} setMemory={props.setMemory}
         isNote={props.isNote} setIsNote={props.setIsNote}
-        actionMode={props.actionMode} setActionMode={props.setActionMode} />
+        actionMode={props.actionMode} setActionMode={props.setActionMode}
+        guessNum={props.guessNum} block={props.block} setBlock={props.setBlock} />
     );
   };
 
