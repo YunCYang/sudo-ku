@@ -283,6 +283,11 @@ div.main div.content.game-content div.panel div.number button:hover {
   border-color: #f5f5f5;
   color: #f5f5f5;
 }
+div.main div.content.game-content div.panel div.number button.active {
+  background-color: #3fc1c9;
+  color: #364f6b;
+  border-color: #f5f5f5;
+}
 div.main div.content.game-content div.panel div.action {
   display: flex;
   flex-direction: column;
@@ -305,6 +310,11 @@ div.main div.content.game-content div.panel div.action button {
 div.main div.content.game-content div.panel div.action button:hover {
   border-color: #f5f5f5;
   color: #f5f5f5;
+}
+div.main div.content.game-content div.panel div.action button.active {
+  background-color: #3fc1c9;
+  color: #364f6b;
+  border-color: #f5f5f5;
 }
 
 .hide {

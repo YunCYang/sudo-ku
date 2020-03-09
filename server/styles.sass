@@ -17,6 +17,11 @@ $color-danger: #fc5185
   padding: 0.3em 0.4em
   cursor: pointer
 
+@mixin active-button
+  background-color: $color-life
+  color: $color-cosmo
+  border-color: $color-light
+
 *
   box-sizing: border-box
 
@@ -207,6 +212,9 @@ div.main
             border-color: $color-light
             color: $color-light
 
+          &.active
+            @include active-button
+
       div.action
         display: flex
         flex-direction: column
@@ -222,6 +230,9 @@ div.main
           &:hover
             border-color: $color-light
             color: $color-light
+
+          &.active
+            @include active-button
 
 .hide
   display: none
