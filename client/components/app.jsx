@@ -11,6 +11,9 @@ const App = () => {
     0: {}, 1: {}, 2: {}, 3: {}, 4: {}
   });
   const [newGame, setNewGame] = React.useState(true);
+  const [memory, setMemory] = React.useState({
+    0: [], 1: [], 2: [], 3: [], 4: []
+  });
 
   return (
     <Router>
@@ -20,7 +23,8 @@ const App = () => {
             <Route exact path='/' render={() => <Main difficulty={difficulty}
               setDifficulty={setDifficulty} setNewGame={setNewGame} currentGame={currentGame} />} />
             <Route path='/game' render={() => <Game difficulty={difficulty}
-              newGame={newGame} currentGame={currentGame} setCurrentGame={setCurrentGame}/>} />
+              newGame={newGame} currentGame={currentGame} setCurrentGame={setCurrentGame}
+              memory={memory} setMemory={setMemory}/>} />
           </div>
           <Shadow />
           <Modal />
