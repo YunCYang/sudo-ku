@@ -190,6 +190,24 @@ div.main
               color: $color-cosmo
               transition: all 0.5s ease 0s
 
+          div.note
+            height: 100%
+            width: 100%
+            display: flex
+            flex-wrap: wrap
+
+            div.note__block
+              height: calc(100% / 3)
+              width: calc(100% / 3)
+              display: flex
+              justify-content: center
+              align-items: center
+
+              span
+                font-size: 1em
+                color: $color-light
+
+
         .col-2,
         .col-5
           border-right: 1.5px solid $color-life
