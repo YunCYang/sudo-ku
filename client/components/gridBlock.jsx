@@ -77,6 +77,11 @@ const GridBlock = props => {
     } else {
       if (!props.actionMode) props.setActionMode('block');
       props.setBlock([props.rowIndex, props.index]);
+      if (props.isNote) {
+        return null;
+      } else {
+        return null;
+      }
     }
   };
 

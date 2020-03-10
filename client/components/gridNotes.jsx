@@ -4,14 +4,14 @@ const GridNotes = props => {
   const [noteDisplay, setNoteDisplay] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   const renderNotes = () => {
-    return noteDisplay.map(item => {
+    return noteDisplay.map((item, index) => {
       if (item) {
         return (
-          <div className='note__block'>
+          <div key={index} className='note__block'>
             <span>{item}</span>
           </div>
         );
-      } else return <div className='note__block'></div>;
+      } else return <div key={index} className='note__block'></div>;
     });
   };
 
