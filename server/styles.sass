@@ -167,18 +167,18 @@ div.main
           display: flex
           justify-content: center
           align-items: center
+          color: $color-life
 
           span
             font-family: $font-content
-            color: $color-life
             font-size: 2em
 
             &.guess
               color: $color-light
 
           div.circle
-            height: 90%
-            width: 90%
+            height: 95%
+            width: 95%
             border-radius: 100%
             display: flex
             justify-content: center
@@ -190,6 +190,12 @@ div.main
               color: $color-cosmo
               transition: all 0.5s ease 0s
 
+              span.guess
+                color: $color-cosmo
+
+          &.uncover
+            cursor: pointer
+
           div.note
             height: 100%
             width: 100%
@@ -200,12 +206,40 @@ div.main
               height: calc(100% / 3)
               width: calc(100% / 3)
               display: flex
-              justify-content: center
-              align-items: center
 
               span
                 font-size: 1em
                 color: $color-light
+
+            div.note__block--0,
+            div.note__block--1,
+            div.note__block--2
+              align-self: flex-end
+
+            div.note__block--3,
+            div.note__block--4,
+            div.note__block--5
+              align-self: center
+
+            div.note__block--6,
+            div.note__block--7,
+            div.note__block--8
+              align-self: flex-start
+
+            div.note__block--0,
+            div.note__block--3,
+            div.note__block--6
+              justify-content: flex-end
+
+            div.note__block--1,
+            div.note__block--4,
+            div.note__block--7
+              justify-content: center
+
+            div.note__block--2,
+            div.note__block--5,
+            div.note__block--8
+              justify-content: flex-start
 
 
         .col-2,

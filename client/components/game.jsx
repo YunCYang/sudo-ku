@@ -2,6 +2,7 @@ import React from 'react';
 import createPuzzle from '../util/createPuzzle';
 import randomCover from '../util/randomCover';
 import Grid from './grid';
+import deepCloneArray from '../util/deepCloneArray';
 import { withRouter } from 'react-router-dom';
 
 const Game = props => {
@@ -42,9 +43,46 @@ const Game = props => {
     }, []
   );
 
+  React.useEffect(
+    () => {
+      // console.log('puzzle', puzzle);
+      // console.log('cover', cover);
+      // console.log('move', props.move);
+      return null;
+    }, [props.move]
+  );
+
   const handleNumberClick = num => {
     if (actionMode === 'block') {
-      return null;
+      const moveCopy = deepCloneArray(props.move[props.move.length - 1]);
+      if (isNote) {
+        let noteCopy = deepCloneArray(moveCopy[block[0]][block[1]][1]);
+        moveCopy[block[0]][block[1]][0] = 0;
+        if (!noteCopy.includes(num)) noteCopy.push(num);
+        else {
+          noteCopy = noteCopy.map(item => {
+            if (item !== num) return item;
+          });
+        }
+        moveCopy[block[0]][block[1]][1] = noteCopy;
+        const stackCopy = [...props.move];
+        stackCopy.push(moveCopy);
+        props.setMove(stackCopy);
+      } else {
+        if (moveCopy[block[0]][block[1]][0] !== num) {
+          moveCopy[block[0]][block[1]][0] = num;
+          moveCopy[block[0]][block[1]][1] = [];
+          const stackCopy = [...props.move];
+          stackCopy.push(moveCopy);
+          props.setMove(stackCopy);
+        } else {
+          moveCopy[block[0]][block[1]][0] = 0;
+          moveCopy[block[0]][block[1]][1] = [];
+          const stackCopy = [...props.move];
+          stackCopy.push(moveCopy);
+          props.setMove(stackCopy);
+        }
+      }
     } else {
       setActionMode('number');
       if (guessNum !== num) setGuessNum(num);

@@ -7,11 +7,11 @@ const GridNotes = props => {
     return noteDisplay.map((item, index) => {
       if (item) {
         return (
-          <div key={index} className='note__block'>
+          <div key={index} className={`note__block note__block--${index}`}>
             <span>{item}</span>
           </div>
         );
-      } else return <div key={index} className='note__block'></div>;
+      } else return <div key={index} className={`note__block note__block--${index}`}></div>;
     });
   };
 
