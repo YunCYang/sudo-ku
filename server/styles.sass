@@ -173,12 +173,19 @@ div.main
             color: $color-life
             font-size: 2em
 
+            &.guess
+              color: $color-light
+
           div.circle
             height: 90%
             width: 90%
             border-radius: 100%
+            display: flex
+            justify-content: center
+            align-items: center
 
-            &.focus
+            &.focus,
+            &:active
               background-color: $color-life
               color: $color-cosmo
               transition: all 0.5s ease 0s
@@ -222,8 +229,10 @@ div.main
             border-color: $color-light
             color: $color-light
 
-          &.active
+          &.active,
+          &:active
             @include active-button
+            transition: all 0.5s ease 0s
 
       div.action
         display: flex

@@ -43,11 +43,23 @@ const Game = props => {
   );
 
   const handleNumberClick = num => {
-    setActionMode('number');
-    if (guessNum !== num) setGuessNum(num);
-    else {
-      setGuessNum(0);
-      setActionMode('');
+    if (actionMode === 'block') {
+      return null;
+    } else {
+      setActionMode('number');
+      if (guessNum !== num) setGuessNum(num);
+      else {
+        setGuessNum(0);
+        setActionMode('');
+      }
+    }
+  };
+
+  const handleUndoClick = () => {
+    if (props.move.length > 1) {
+      const moveCopy = [...props.move];
+      moveCopy.pop();
+      props.setMove(moveCopy);
     }
   };
 
@@ -128,7 +140,7 @@ const Game = props => {
             </button>
           </div>
           <div className="action__button">
-            <button>
+            <button onClick={handleUndoClick}>
               <i className="fas fa-undo"></i>
             </button>
           </div>

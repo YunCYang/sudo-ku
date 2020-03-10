@@ -22,11 +22,11 @@ const App = () => {
     [[0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []]],
     [[0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []], [0, []]]
   ];
-  const [move0, setMove0] = React.useState([...emptyMoves]);
-  const [move1, setMove1] = React.useState([...emptyMoves]);
-  const [move2, setMove2] = React.useState([...emptyMoves]);
-  const [move3, setMove3] = React.useState([...emptyMoves]);
-  const [move4, setMove4] = React.useState([...emptyMoves]);
+  const [move0, setMove0] = React.useState([emptyMoves]);
+  const [move1, setMove1] = React.useState([emptyMoves]);
+  const [move2, setMove2] = React.useState([emptyMoves]);
+  const [move3, setMove3] = React.useState([emptyMoves]);
+  const [move4, setMove4] = React.useState([emptyMoves]);
 
   const selectMove = () => {
     if (difficulty === 0) {
