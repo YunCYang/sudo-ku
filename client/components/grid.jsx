@@ -22,10 +22,10 @@ const Grid = props => {
   const renderGridRow = () => {
     return gameData.map(
       (item, index) => <GridRow key={index} rowData={item} index={index}
-        memory={props.memory[index]} setMemory={props.setMemory}
-        isNote={props.isNote} setIsNote={props.setIsNote}
-        actionMode={props.actionMode} setActionMode={props.setActionMode}
-        guessNum={props.guessNum} block={props.block} setBlock={props.setBlock} />
+        move={props.move} setMove={props.setMove} isNote={props.isNote}
+        setIsNote={props.setIsNote} actionMode={props.actionMode}
+        setActionMode={props.setActionMode} guessNum={props.guessNum}
+        block={props.block} setBlock={props.setBlock} />
     );
   };
 

@@ -16,11 +16,10 @@ const GridRow = props => {
     if (blockArr.length) {
       return blockArr.map((item, index) => <GridBlock key={index}
         value={item.value} isCover={item.isCover} index={index}
-        memory={props.memory[index]} setMemory={props.setMemory}
-        isNote={props.isNote} setIsNote={props.setIsNote}
-        actionMode={props.actionMode} setActionMode={props.setActionMode}
-        guessNum={props.guessNum} block={props.block} setBlock={props.setBlock}
-        rowIndex={props.index} />);
+        move={props.move} setMove={props.setMove} isNote={props.isNote}
+        setIsNote={props.setIsNote} actionMode={props.actionMode}
+        setActionMode={props.setActionMode} guessNum={props.guessNum}
+        block={props.block} setBlock={props.setBlock} rowIndex={props.index} />);
     } else return null;
   };
 
