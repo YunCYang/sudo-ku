@@ -9,15 +9,15 @@ const randomCover = difficulty => {
   randomNumArr = fisherYatesShuffle(randomNumArr);
   let randomSelection = [];
   if (difficulty === 0) {
-    randomSelection = randomNumArr.slice(0, 59 + randomOffset);
+    randomSelection = randomNumArr.slice(0, 20 + randomOffset);
   } else if (difficulty === 1) {
-    randomSelection = randomNumArr.slice(0, 49 + randomOffset);
+    randomSelection = randomNumArr.slice(0, 30 + randomOffset);
   } else if (difficulty === 2) {
-    randomSelection = randomNumArr.slice(0, 38 + randomOffset);
+    randomSelection = randomNumArr.slice(0, 41 + randomOffset);
   } else if (difficulty === 3) {
-    randomSelection = randomNumArr.slice(0, 27 + randomOffset);
+    randomSelection = randomNumArr.slice(0, 52 + randomOffset);
   } else if (difficulty === 4) {
-    randomSelection = randomNumArr.slice(0, 17 + randomOffset);
+    randomSelection = randomNumArr.slice(0, 62 + randomOffset);
   }
   const result = [];
   for (const num of randomSelection) {

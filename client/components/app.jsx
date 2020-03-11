@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Main from './main';
 import Game from './game';
-import Shadow from './shadow';
 import Modal from './modal';
 
 const App = () => {
@@ -27,6 +26,8 @@ const App = () => {
   const [move2, setMove2] = React.useState([emptyMoves]);
   const [move3, setMove3] = React.useState([emptyMoves]);
   const [move4, setMove4] = React.useState([emptyMoves]);
+  const [gameWon, setGameWon] = React.useState(false);
+  const [modalShown, setModalShown] = React.useState(false);
 
   const selectMove = () => {
     if (difficulty === 0) {
@@ -62,13 +63,14 @@ const App = () => {
         <>
           <div className="main">
             <Route exact path='/' render={() => <Main difficulty={difficulty}
-              setDifficulty={setDifficulty} setNewGame={setNewGame} currentGame={currentGame} />} />
+              setDifficulty={setDifficulty} setNewGame={setNewGame} currentGame={currentGame}
+              setGameWon={setGameWon} setMove={selectSetMove()} emptyMoves={emptyMoves} />} />
             <Route path='/game' render={() => <Game difficulty={difficulty}
               newGame={newGame} currentGame={currentGame} setCurrentGame={setCurrentGame}
-              move={selectMove()} setMove={selectSetMove()}/>} />
+              move={selectMove()} setMove={selectSetMove()} gameWon={gameWon}
+              setGameWon={setGameWon} setModalShown={setModalShown}/>} />
           </div>
-          <Shadow />
-          <Modal />
+          <Modal modalShown={modalShown} setModalShown={setModalShown} />
         </>
       </Switch>
     </Router>

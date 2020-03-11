@@ -2,6 +2,7 @@ import React from 'react';
 import createPuzzle from '../util/createPuzzle';
 import randomCover from '../util/randomCover';
 import Grid from './grid';
+import deepCloneArray from '../util/deepCloneArray';
 import { withRouter } from 'react-router-dom';
 
 const Game = props => {
@@ -42,9 +43,56 @@ const Game = props => {
     }, []
   );
 
+  React.useEffect(
+    () => {
+      let counter = 0;
+      let finish = false;
+      for (const loc of cover) {
+        if (puzzle[loc[0]][loc[1]] !== props.move[props.move.length - 1][loc[0]][loc[1]][0]) {
+          continue;
+        } else {
+          counter++;
+          if (counter === cover.length) finish = true;
+        }
+      }
+      if (finish) {
+        props.setGameWon(true);
+        props.setModalShown(true);
+      }
+    }, [props.move]
+  );
+
   const handleNumberClick = num => {
-    if (actionMode === 'block') {
-      return null;
+    if (actionMode === 'block' && !props.gameWon) {
+      const moveCopy = deepCloneArray(props.move[props.move.length - 1]);
+      if (isNote) {
+        let noteCopy = deepCloneArray(moveCopy[block[0]][block[1]][1]);
+        moveCopy[block[0]][block[1]][0] = 0;
+        if (!noteCopy.includes(num)) noteCopy.push(num);
+        else {
+          noteCopy = noteCopy.map(item => {
+            if (item !== num) return item;
+          });
+        }
+        moveCopy[block[0]][block[1]][1] = noteCopy;
+        const stackCopy = [...props.move];
+        stackCopy.push(moveCopy);
+        props.setMove(stackCopy);
+      } else {
+        if (moveCopy[block[0]][block[1]][0] !== num) {
+          moveCopy[block[0]][block[1]][0] = num;
+          moveCopy[block[0]][block[1]][1] = [];
+          const stackCopy = [...props.move];
+          stackCopy.push(moveCopy);
+          props.setMove(stackCopy);
+        } else {
+          moveCopy[block[0]][block[1]][0] = 0;
+          moveCopy[block[0]][block[1]][1] = [];
+          const stackCopy = [...props.move];
+          stackCopy.push(moveCopy);
+          props.setMove(stackCopy);
+        }
+      }
     } else {
       setActionMode('number');
       if (guessNum !== num) setGuessNum(num);
@@ -56,7 +104,7 @@ const Game = props => {
   };
 
   const handleUndoClick = () => {
-    if (props.move.length > 1) {
+    if (props.move.length > 1 && !props.gameWon) {
       const moveCopy = [...props.move];
       moveCopy.pop();
       props.setMove(moveCopy);
@@ -69,57 +117,58 @@ const Game = props => {
         <Grid puzzle={puzzle} cover={cover} actionMode={actionMode}
           setActionMode={setActionMode} guessNum={guessNum}
           move={props.move} setMove={props.setMove} isNote={isNote}
-          setIsNote={setIsNote} block={block} setBlock={setBlock} />
+          setIsNote={setIsNote} block={block} setBlock={setBlock}
+          gameWon={props.gameWon} />
       </div>
       <div className="panel">
         <div className='number'>
           <div className="number__button">
-            <button className={guessNum === 1 ? 'active' : ''} onClick={
+            <button className={guessNum === 1 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(1)
             }>1</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 2 ? 'active' : ''} onClick={
+            <button className={guessNum === 2 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(2)
             }>2</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 3 ? 'active' : ''} onClick={
+            <button className={guessNum === 3 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(3)
             }>3</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 4 ? 'active' : ''} onClick={
+            <button className={guessNum === 4 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(4)
             }>4</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 5 ? 'active' : ''} onClick={
+            <button className={guessNum === 5 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(5)
             }>5</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 6 ? 'active' : ''} onClick={
+            <button className={guessNum === 6 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(6)
             }>6</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 7 ? 'active' : ''} onClick={
+            <button className={guessNum === 7 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(7)
             }>7</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 8 ? 'active' : ''} onClick={
+            <button className={guessNum === 8 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(8)
             }>8</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === 9 ? 'active' : ''} onClick={
+            <button className={guessNum === 9 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(9)
             }>9</button>
           </div>
           <div className="number__button">
-            <button className={guessNum === -1 ? 'active' : ''} onClick={
+            <button className={guessNum === -1 && !props.gameWon ? 'active' : ''} onClick={
               () => handleNumberClick(-1)
             }>X</button>
           </div>
@@ -133,7 +182,7 @@ const Game = props => {
             </button>
           </div>
           <div className="action__button">
-            <button className={isNote ? 'active' : ''} onClick={
+            <button className={isNote && !props.gameWon ? 'active' : ''} onClick={
               () => setIsNote(!isNote)
             }>
               <i className="fas fa-pen"></i>

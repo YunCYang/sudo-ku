@@ -19,7 +19,8 @@ const GridRow = props => {
         move={props.move} setMove={props.setMove} isNote={props.isNote}
         setIsNote={props.setIsNote} actionMode={props.actionMode}
         setActionMode={props.setActionMode} guessNum={props.guessNum}
-        block={props.block} setBlock={props.setBlock} rowIndex={props.index} />);
+        block={props.block} setBlock={props.setBlock} rowIndex={props.index}
+        gameWon={props.gameWon} />);
     } else return null;
   };
 
