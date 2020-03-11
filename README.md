@@ -1,7 +1,7 @@
 # Sudo-ku
 
 ## Summary
-A sudoku game project.
+A sudoku game project. Recursively creates game board, and allow players to redo recent actions.
 
 ## Live Demo
 Link: https://sudo-ku.yuncyang.com/
