@@ -1,7 +1,7 @@
 # Sudo-ku
 
 ## Summary
-A simple sudoku game project.
+A sudoku game project.
 
 ## Live Demo
 Link: https://sudo-ku.yuncyang.com/
