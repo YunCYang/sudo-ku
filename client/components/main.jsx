@@ -113,6 +113,8 @@ const Main = props => {
           () => {
             props.history.push('/game');
             props.setNewGame(true);
+            props.setGameWon(false);
+            props.setMove([props.emptyMoves]);
           }
         }>New Game</button>
         <button id='resume' type='button' onClick={

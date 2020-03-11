@@ -25,7 +25,7 @@ const Grid = props => {
         move={props.move} setMove={props.setMove} isNote={props.isNote}
         setIsNote={props.setIsNote} actionMode={props.actionMode}
         setActionMode={props.setActionMode} guessNum={props.guessNum}
-        block={props.block} setBlock={props.setBlock} />
+        block={props.block} setBlock={props.setBlock} gameWon={props.gameWon} />
     );
   };
 

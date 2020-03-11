@@ -308,6 +308,45 @@ div.main
 .hide
   display: none
 
+div.modal-shadow
+  position: fixed
+  height: 100vh
+  width: 100vw
+  top: 0
+  background-color: rgba(0, 0, 0, 0.5)
+  z-index: 2
+  display: flex
+  justify-content: center
+  align-items: center
+
+  div.modal
+    background-color: $color-light
+    opacity: 1
+    width: 40%
+    padding: 1em
+    display: flex
+    flex-direction: column
+    font-family: $font-content
+    border-radius: 10px
+
+    div.content
+      display: flex
+      justify-content: center
+      color: $color-cosmo
+
+    div.button
+      display: flex
+      justify-content: center
+
+      button
+        @include game-button( 10px, 0.8em )
+        margin: 1em 0.2em 0 0.2em
+
+        &:active
+          @include active-button
+          color: $color-light
+
+
 @media screen and ( max-width: 710px )
   div.main
     div.content.game-content
@@ -335,6 +374,10 @@ div.main
         div.action
           flex-direction: row
 
+  div.modal-shadow
+    div.modal
+      width: 50%
+
 @media screen and ( max-width: 420px )
   div.main
     div.content.game-content
@@ -343,3 +386,7 @@ div.main
           div.col
             span
               font-size: 1.2em
+
+  div.modal-shadow
+    div.modal
+      width: 60%

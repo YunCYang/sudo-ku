@@ -5,7 +5,7 @@ import GridNotes from './gridNotes';
 const GridBlock = props => {
 
   const gridDisplay = () => {
-    if (props.isCover) return <span>{props.value}</span>;
+    if (!props.isCover) return <span>{props.value}</span>;
     else {
       if (props.move[props.move.length - 1][props.rowIndex][props.index][1].length) {
         return (
@@ -25,7 +25,7 @@ const GridBlock = props => {
   };
 
   const clickHandler = () => {
-    if (!props.isCover) {
+    if (props.isCover && !props.gameWon) {
       if (props.actionMode === 'number') {
         const moveCopy = deepCloneArray(props.move[props.move.length - 1]);
         if (props.guessNum === -1) {
@@ -82,7 +82,7 @@ const GridBlock = props => {
   };
 
   const coverBlockClass = () => {
-    if (!props.isCover) return 'uncover';
+    if (props.isCover) return 'uncover';
     else return '';
   };
 
