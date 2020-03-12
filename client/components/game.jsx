@@ -68,7 +68,8 @@ const Game = props => {
       if (isNote) {
         let noteCopy = deepCloneArray(moveCopy[block[0]][block[1]][1]);
         moveCopy[block[0]][block[1]][0] = 0;
-        if (!noteCopy.includes(num)) noteCopy.push(num);
+        if (!noteCopy.includes(num) && num !== -1) noteCopy.push(num);
+        else if (num === -1) noteCopy = [];
         else {
           noteCopy = noteCopy.map(item => {
             if (item !== num) return item;
@@ -80,8 +81,9 @@ const Game = props => {
         props.setMove(stackCopy);
       } else {
         if (moveCopy[block[0]][block[1]][0] !== num) {
-          moveCopy[block[0]][block[1]][0] = num;
           moveCopy[block[0]][block[1]][1] = [];
+          if (num !== -1) moveCopy[block[0]][block[1]][0] = num;
+          else moveCopy[block[0]][block[1]][0] = 0;
           const stackCopy = [...props.move];
           stackCopy.push(moveCopy);
           props.setMove(stackCopy);
